@@ -32,8 +32,8 @@ import org.json.simple.parser.ParseException;
  */
 public class VesselUploader {
 	
-	//final String ApiHost = "www.vesselapp.com";
-  final String ApiHost = "localhost";
+	final String ApiHost = "api.vesselapp.com";
+  //final String ApiHost = "localhost";
 	final String ApiPath = "/api3/deploy/upload/";
 	
 	
