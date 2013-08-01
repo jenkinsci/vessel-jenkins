@@ -45,7 +45,7 @@ import org.kohsuke.stapler.StaplerRequest;
 public class VesselRecorder extends Recorder
 {
     private String apiKey;
-    public String getSecretKey()
+    public String getApiKey()
     {
         return this.apiKey;
     }
