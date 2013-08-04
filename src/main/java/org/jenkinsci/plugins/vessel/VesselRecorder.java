@@ -36,9 +36,10 @@ import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
 /*
- * https://github.com/derFunk/jenkins-zubhium-plugin
- * 
  * Credits:
+ * derFunk for the original Zubhium plugin
+ * https://github.com/derFunk/jenkins-zubhium-plugin
+ * Kohsuke Kawaguchi, Founder of CI Jenkins Server
  * Inspired by https://github.com/lacostej/testflight-plugin from Jerome Lacoste
  */
 
