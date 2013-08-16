@@ -35,6 +35,11 @@
       <version>${httpclient.version}</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>  
+      <groupId>ca.juliusdavies</groupId> 
+      <artifactId>not-yet-commons-ssl</artifactId> 
+      <version>0.3.11</version>
+    </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpmime</artifactId>
