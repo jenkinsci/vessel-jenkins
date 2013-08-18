@@ -27,7 +27,7 @@ public class SSLCertificateStore {
     Plugin plug = inst.getPlugin("vessel");   
     File plugDir =plug.getWrapper().parent.rootDir;
     File caFile = new File(plugDir, name);
-    System.out.println("Trying to load " + caFile.getAbsolutePath());
+    //System.out.println("Trying to load " + caFile.getAbsolutePath());
     try {
       return IOUtils.toByteArray(new FileInputStream(caFile));
     } catch (FileNotFoundException e) {
