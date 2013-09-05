@@ -4,6 +4,7 @@ import hudson.EnvVars;
 import hudson.Extension;
 import hudson.FilePath;
 import hudson.Launcher;
+import hudson.Plugin;
 import hudson.model.Action;
 import hudson.model.BuildListener;
 import hudson.model.Result;
@@ -27,6 +28,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import jenkins.model.Jenkins;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -36,9 +38,10 @@ import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
 /*
- * https://github.com/derFunk/jenkins-zubhium-plugin
- * 
  * Credits:
+ * derFunk for the original Zubhium plugin
+ * https://github.com/derFunk/jenkins-zubhium-plugin
+ * Kohsuke Kawaguchi, Founder of CI Jenkins Server
  * Inspired by https://github.com/lacostej/testflight-plugin from Jerome Lacoste
  */
 
@@ -111,12 +114,13 @@ public class VesselRecorder extends Recorder
     }
 
     @DataBoundConstructor
-    public VesselRecorder(String apiKey, String releaseNotes, Boolean replace, String apkPath, String userGroups,String proxyHost, String proxyUser, String proxyPass, int proxyPort)
+    public VesselRecorder(String apiKey, String releaseNotes, Boolean replace, String apkPath, String users, String userGroups, String proxyHost, String proxyUser, String proxyPass, int proxyPort)
     {
         this.apiKey = apiKey;
         this.releaseNotes = releaseNotes;
         this.apkPath = apkPath;
         this.replace = replace;
+        this.users = users;
         this.userGroups = userGroups;
         
         this.proxyHost = proxyHost;
@@ -163,7 +167,7 @@ public class VesselRecorder extends Recorder
             File file = getFileLocally(build.getWorkspace(), vars.expand(expandPath), tempDir, pathSpecified);
             listener.getLogger().println(file);
             
-            VesselUploader uploader = new VesselUploader();
+            VesselUploader uploader = new VesselUploader(listener.getLogger());
             VesselUploader.UploadRequest ur = createUploadRequest(file, vars);
 
             final VesselResponse vesselResponse;
@@ -260,6 +264,7 @@ public class VesselRecorder extends Recorder
         ur.apiKey = vars.expand(apiKey);
         ur.releaseNotes = vars.expand(releaseNotes);
         ur.userGroups = vars.expand(userGroups);
+        ur.users = vars.expand(users);
         ur.mapping =  vars.expand(mapping);
         ur.file = apk;
         ur.replace = replace;
