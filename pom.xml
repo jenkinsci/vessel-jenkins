@@ -9,7 +9,7 @@
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>vessel</artifactId>
   <name>Vessel Plugin</name>
-  <description>Uploads Android and iOS builds to www.zubhium.com</description>
+  <description>Uploads Android and iOS builds to www.vessel.io</description>
   <version>1.0-SNAPSHOT</version>
   <packaging>hpi</packaging>
 
