@@ -11,7 +11,7 @@
   <name>Vessel Plugin</name>
   <description>Uploads Android and iOS builds to Vessel.io (www.vessel.io)</description>
   <url>https://wiki.jenkins-ci.org/display/JENKINS/Vessel+plugin</url>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>hpi</packaging>
 
   <scm>
